@@ -1,0 +1,10 @@
+com\example\demo\rest\FormUpload.class
+com\example\demo\rest\Book.class
+com\example\demo\rest\Invoice.class
+com\example\demo\rest\InvoiceEndpoint.class
+com\example\demo\rest\MyEntity.class
+com\example\demo\rest\HelloWorldEndpoint.class
+com\example\demo\rest\RestApplication.class
+com\example\demo\rest\UploadFile.class
+com\example\demo\rest\DateProducer.class
+com\example\demo\rest\BookEndpoint.class

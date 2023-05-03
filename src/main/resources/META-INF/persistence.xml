@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<persistence
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.1"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+   
+   <persistence-unit name="MyPU" transaction-type="JTA"> <!--  Exception handling request to /: org.jboss.resteasy.spi.UnhandledException: javax.persistence.PersistenceException: No Persistence provider for EntityManager named MyPU -->
+   <!-- <persistence-unit name="MyPU" transaction-type="RESOURCE_LOCAL"> -->
+  <!-- <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source> -->
+  
+  <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> 
+  <class>com.example.demo.rest.Invoice</class>
+  <class>com.example.demo.rest.Book</class> <!-- POJO entity -->
+  <class>com.example.demo.rest.MyEntity</class>
+  
+  
+  <!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+  <!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
+    
+	<!--
+	<properties>
+		<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+		<property name="javax.persistence.schema-generation.create-source" value="metadata"/>
+		<property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
+	  
+	  --><!-- <property name="packagesToScan" value="org.wildfly.swarm.examples.ds.war.models" /> --><!-- done nothing --><!--
+    
+		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+		<property name="javax.persistence.jdbc.user" value="postgres"/>
+		<property name="javax.persistence.jdbc.password" value="tomcat14200"/>
+		-->
+    <!-- ****************************************************************************************************************************** -->
+	<properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/postgres" />
+            <property name="hibernate.connection.username" value="postgres" />
+            <property name="hibernate.connection.password" value="tomcat@14200" />
+
+             <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.flushMode" value="FLUSH_AUTO" />
+            <property name="hibernate.hbm2ddl.auto" value="" /> <!-- original  "create-drop"-->
+    </properties>
+  </persistence-unit>
+</persistence>

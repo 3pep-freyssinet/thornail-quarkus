@@ -1,0 +1,126 @@
+package com.example.demo.rest;
+
+//import com.example.models.Book;
+
+
+//import javax.enterprise.context.ApplicationScoped;
+//import javax.persistence.EntityManager;
+//import javax.persistence.PersistenceContext;
+//import javax.transaction.Transactional;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.File;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.FormParam;
+
+//import javax.json.*;
+
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;	//runtime error
+import org.jboss.resteasy.plugins.providers.multipart.InputPart;
+
+//import retrofit2.http.Headers;
+//import retrofit2.http.Multipart;
+
+@Path("/images")
+//@ApplicationScoped
+public class ImageUpload {
+
+  //@PersistenceContext
+  //EntityManager em;
+
+
+  //@POST
+  //@Path("/upload")
+  //@Multipart
+  
+  //@Path("/autorization/titi/{message}")
+  //@Consumes(MediaType.APPLICATION_JSON)
+  //@Produces(MediaType.APPLICATION_JSON)
+  //@Produces("text/plain")
+    //public Response uploadImage(){
+	//	return Response.ok("uploadImage!************").build();
+	//}
+	
+	
+	@POST
+    @Path("/upload/{id}")  //Your Path or URL to call this service
+    //@Consumes(MediaType.MULTIPART_FORM_DATA)   //Cannot consume content type
+	//@Consumes(MediaType.TEXT_PLAIN)
+	//@Produces(MediaType.TEXT_PLAIN)
+	//@Consumes(MediaType.MULTIPART_FORM_DATA)
+	//@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("multipart/form-data")
+	//@Consumes("application/x-www-form-urlencoded")		//file not found
+	//@Consumes("application/x-www-form-urlencoded")			//Cannot consume content type
+    public void upload(@MultipartForm MyEntity entity, @PathParam("id") int id) throws IOException {
+	//public void upload(MultipartFormDataInput input, @PathParam("id") int id){
+	
+		
+		System.out.println("******************************** entity = "+entity+" id = "+id+" name = "+entity.firstname+" bytes = "+entity.filedata+" length = "+ entity.filedata.length);
+		
+	    //System.out.println("*********************************** multipart entity = ");
+		//return Response.ok("MultipartForm!************").build();
+	
+	//JsonObject jsonFile = Json.createObjectBuilder()
+                //.add("length", entity.getFile().length)
+                //.add("file", entity.getData().toString())
+                //.build();
+ 
+        //return Response.ok(jsonFile).build();
+    }
+	
+	/*
+		 //Your local disk path where you want to store the file
+		String uploadedFileLocation = "D://uploadedFiles/" + fileDetail.getFileName();
+		System.out.println(uploadedFileLocation);
+		
+		// save it
+		File  objFile=new File(uploadedFileLocation);
+		if(objFile.exists())
+		{
+			objFile.delete();
+
+		}
+
+		saveToFile(uploadedInputStream, uploadedFileLocation);
+
+		String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
+
+		return Response.status(200).entity(output).build();
+		
+		
+
+    }
+    */
+    /*
+    private void saveToFile(InputStream uploadedInputStream, String uploadedFileLocation) {
+
+		try {
+			OutputStream out = null;
+			int read = 0;
+			byte[] bytes = new byte[1024];
+
+			out = new FileOutputStream(new File(uploadedFileLocation));
+			while ((read = uploadedInputStream.read(bytes)) != -1) {
+				out.write(bytes, 0, read);
+			}
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+    }
+     */
+	
+	
+	
+	
+}

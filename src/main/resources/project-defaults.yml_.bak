@@ -1,0 +1,26 @@
+thorntail:
+  datasources:
+    jdbc-drivers:
+      org.postgresql:
+        driver-class-name: org.postgresql.Driver
+        xa-datasource-class-name: org.postgresql.xa.PGXADataSource
+        driver-module-name: org.postgresql
+    data-sources:
+      ExampleDS:
+        driver-name: org.postgresql
+        connection-url: jdbc:postgresql://localhost:5432/postgres
+        user-name: "postgres"
+        password: "tomcat14200"
+thorntail:
+  management:
+    security-realms:
+      ApplicationRealm:
+        in-memory-authentication:
+          users:
+            bob:
+              password: "tacos"
+        in-memory-authorization:
+          users:
+            bob:
+              roles:
+              - admin

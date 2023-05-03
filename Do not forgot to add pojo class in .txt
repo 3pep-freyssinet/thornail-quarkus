@@ -1,0 +1,1 @@
+Do not forgot to add pojo class in 'persistence.xml' file
